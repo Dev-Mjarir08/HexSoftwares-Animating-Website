@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APPLE — Luxury Clothing Brand | Timeless Modern Craft</title>
+  <meta name="description" content="APPLE is a luxury clothing house crafting minimal, timeless garments. Explore the collection, our story, and the atelier behind the brand." />
+  <meta name="theme-color" content="#0F0F0F" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Tailwind CSS — compiled locally via Tailwind CLI (NOT CDN) -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/media.css" />
+</head>
+<body class="bg-bg text-primary font-body">
+
+  <!-- ============ CUSTOM CURSOR ============ -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"><span class="cursor-label">View</span></div>
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader" role="status" aria-label="Loading">
+    <div class="preloader-logo">APPLE</div>
+    <div class="preloader-bar-track">
+      <div class="preloader-bar-fill" id="preloaderFill"></div>
+    </div>
+    <div class="preloader-percent"><span id="preloaderPercent">0</span>%</div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="container-fluid flex items-center justify-between">
+      <a href="#home" class="font-heading text-2xl md:text-3xl tracking-wide text-primary" data-cursor="link" aria-label="APPLE Home">APPLE</a>
+
+      <nav class="hidden md:flex items-center gap-10" aria-label="Primary navigation">
+        <a href="#home" class="nav-link is-active" data-cursor="link">Home</a>
+        <a href="#collection" class="nav-link" data-cursor="link">Collection</a>
+        <a href="#about" class="nav-link" data-cursor="link">About</a>
+        <a href="#featured" class="nav-link" data-cursor="link">Featured</a>
+        <a href="#contact" class="nav-link" data-cursor="link">Contact</a>
+      </nav>
+
+      <div class="hidden md:block">
+        <a href="#collection" class="btn-underline" data-cursor="link"><i class="fa-solid fa-bag-shopping"></i> Shop</a>
+      </div>
+
+      <button class="hamburger md:hidden" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" data-cursor="link">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="flex flex-col items-center gap-2" aria-label="Mobile navigation">
+      <a href="#home" class="menu-link" data-cursor="link">Home</a>
+      <a href="#collection" class="menu-link" data-cursor="link">Collection</a>
+      <a href="#about" class="menu-link" data-cursor="link">About</a>
+      <a href="#featured" class="menu-link" data-cursor="link">Featured</a>
+      <a href="#contact" class="menu-link" data-cursor="link">Contact</a>
+    </nav>
+    <div class="flex items-center gap-6 mt-14 opacity-0" id="mobileMenuSocials">
+      <a href="#" class="btn-scale" data-cursor="link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="btn-scale" data-cursor="link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+      <a href="#" class="btn-scale" data-cursor="link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </div>
+
+  <main id="home">
+
+    <!-- ============ HERO ============ -->
+    <section class="relative min-h-screen h-screen w-full flex flex-col justify-between items-center overflow-hidden bg-bg text-center select-none pt-24 pb-6" id="hero">
+      
+      <!-- Background Container -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <!-- Hero Background Image (covers entire viewport) -->
+        <img src="assets/images/hero-main.jpg" alt="APPLE Luxury Collection" class="w-full h-full object-cover object-center hero-bg-img" data-cursor="media" loading="eager" />
+        
+        <!-- Dark Overlay (rgba(0,0,0,0.55)) -->
+        <div class="absolute inset-0 bg-black/55 z-10"></div>
+
+        <!-- Soft Vignette Effect -->
+        <div class="absolute inset-0 hero-vignette z-10"></div>
+
+        <!-- Animated Gradient Glow -->
+        <div class="hero-ambient-glow absolute -top-1/4 -left-1/4 w-[150%] h-[150%] z-10 pointer-events-none"></div>
+
+        <!-- Floating Light Particles Canvas -->
+        <canvas id="heroParticlesCanvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none opacity-70"></canvas>
+
+        <!-- Subtle backdrop blur for cinematic texture -->
+        <div class="absolute inset-0 backdrop-blur-[1px] z-10"></div>
+      </div>
+
+      <!-- Main Content Container (Full-width 12-column flex column, centered) -->
+      <div class="container-fluid relative z-20 w-full max-w-6xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-4">
+        
+        <!-- Small Luxury Label -->
+        <div data-hero-label class="eyebrow eyebrow-center text-xs sm:text-sm tracking-widest2 text-accent uppercase mb-3 sm:mb-5">
+          Est. 1998 — Atelier APPLE
+        </div>
+
+        <!-- Large Animated Headline (100–140px Desktop, 48–60px Mobile) -->
+        <h1 class="hero-title font-heading uppercase text-primary tracking-widest leading-[0.88] my-2 text-[48px] sm:text-[84px] md:text-[110px] lg:text-[135px] text-center" data-split-hero>
+          WEAR<br />THE<br />SILENCE
+        </h1>
+
+        <!-- Animated Changing Word / Typing Effect -->
+        <div data-hero-subtitle class="font-sub text-lg sm:text-2xl md:text-3xl text-accent/90 tracking-widest uppercase mt-3 sm:mt-4 mb-2 flex items-center justify-center">
+          <span data-typing-target class="typing-word"></span><span class="typing-cursor">&nbsp;</span>
+        </div>
+
+        <!-- Short Premium Description -->
+        <p data-hero-desc class="body-text max-w-xl mx-auto mt-3 sm:mt-4 text-center text-secondary/90 text-sm sm:text-base md:text-lg leading-relaxed px-4">
+          Considered garments for those who dress with intent. Every seam, every fabric, every silhouette — designed to outlast trend cycles.
+        </p>
+
+        <!-- Primary & Secondary CTAs (Horizontal on Desktop/Tablet, Stacked on Mobile) -->
+        <div data-hero-btns class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 w-full sm:w-auto px-6">
+          <a href="#collection" class="btn-magnetic w-full sm:w-auto text-center" data-magnetic data-cursor="link"><i class="fa-solid fa-bag-shopping"></i> Shop Now</a>
+          <a href="#featured" class="btn-liquid w-full sm:w-auto text-center" data-cursor="link">Explore Collection</a>
+        </div>
+
+        <!-- Infinite Auto-Moving Brand Marquee (Below Buttons inside Hero section) -->
+        <div data-hero-marquee class="w-full max-w-4xl mx-auto mt-8 sm:mt-10 overflow-hidden py-3 border-y border-white/10 backdrop-blur-md bg-black/40 rounded-sm">
+          <div class="marquee-track hero-marquee-track" id="heroMarqueeTrack">
+            <span>NEW COLLECTION</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span class="outline-text">ATELIER</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span>PREMIUM QUALITY</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span class="outline-text">HANDCRAFTED</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span>LUXURY</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span class="outline-text">LIMITED EDITION</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span>NEW COLLECTION</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span class="outline-text">ATELIER</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span>PREMIUM QUALITY</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span class="outline-text">HANDCRAFTED</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span>LUXURY</span><i class="fa-solid fa-star text-accent text-xs"></i>
+            <span class="outline-text">LIMITED EDITION</span><i class="fa-solid fa-star text-accent text-xs"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Minimal Animated Scroll Indicator (Bottom Center) -->
+      <div class="scroll-indicator relative z-20 pointer-events-none mb-2" aria-hidden="true">
+        <span class="font-sub text-[10px] tracking-widest2 uppercase text-secondary/80">Scroll</span>
+        <span class="line"></span>
+      </div>
+
+    </section>
+
+    <!-- ============ FEATURED COLLECTION — STICKY HORIZONTAL SCROLL ============ -->
+    <section class="relative bg-bg overflow-hidden" id="featured">
+      <div class="pin-wrap">
+        <div class="container-fluid pt-24 md:pt-0">
+          <p class="eyebrow" data-reveal>Featured</p>
+          <h2 class="heading-lg" data-reveal>The Collection</h2>
+        </div>
+
+        <div class="horizontal-track mt-14 px-6 md:px-20" id="horizontalTrack">
+          <article class="collection-card" data-cursor="media" data-tilt>
+            <img src="assets/images/collection-1.jpg" alt="APPLE tailored wool overcoat" class="cc-media" />
+            <div class="cc-overlay">
+              <span class="font-sub text-xs uppercase tracking-widest2 text-accent">01 — Outerwear</span>
+              <h3 class="cc-title">The Overcoat</h3>
+              <a href="#contact" class="btn-arrow cc-btn" data-cursor="link">Discover <span class="arrow-track"><i class="fa-solid fa-arrow-right a1"></i><i class="fa-solid fa-arrow-right a2"></i></span></a>
+            </div>
+          </article>
+
+          <article class="collection-card" data-cursor="media" data-tilt>
+            <img src="assets/images/collection-2.jpg" alt="APPLE ribbed cashmere turtleneck" class="cc-media" />
+            <div class="cc-overlay">
+              <span class="font-sub text-xs uppercase tracking-widest2 text-accent">02 — Knitwear</span>
+              <h3 class="cc-title">The Turtleneck</h3>
+              <a href="#contact" class="btn-arrow cc-btn" data-cursor="link">Discover <span class="arrow-track"><i class="fa-solid fa-arrow-right a1"></i><i class="fa-solid fa-arrow-right a2"></i></span></a>
+            </div>
+          </article>
+
+          <article class="collection-card" data-cursor="media" data-tilt>
+            <img src="assets/images/collection-3.jpg" alt="APPLE tailored suit jacket" class="cc-media" />
+            <div class="cc-overlay">
+              <span class="font-sub text-xs uppercase tracking-widest2 text-accent">03 — Tailoring</span>
+              <h3 class="cc-title">The Blazer</h3>
+              <a href="#contact" class="btn-arrow cc-btn" data-cursor="link">Discover <span class="arrow-track"><i class="fa-solid fa-arrow-right a1"></i><i class="fa-solid fa-arrow-right a2"></i></span></a>
+            </div>
+          </article>
+
+          <article class="collection-card" data-cursor="media" data-tilt>
+            <img src="assets/images/collection-4.jpg" alt="APPLE leather bag and belt" class="cc-media" />
+            <div class="cc-overlay">
+              <span class="font-sub text-xs uppercase tracking-widest2 text-accent">04 — Leather Goods</span>
+              <h3 class="cc-title">The Accessories</h3>
+              <a href="#contact" class="btn-arrow cc-btn" data-cursor="link">Discover <span class="arrow-track"><i class="fa-solid fa-arrow-right a1"></i><i class="fa-solid fa-arrow-right a2"></i></span></a>
+            </div>
+          </article>
+
+          <article class="collection-card" data-cursor="media" data-tilt>
+            <img src="assets/images/collection-5.jpg" alt="APPLE leather boots" class="cc-media" />
+            <div class="cc-overlay">
+              <span class="font-sub text-xs uppercase tracking-widest2 text-accent">05 — Footwear</span>
+              <h3 class="cc-title">The Boots</h3>
+              <a href="#contact" class="btn-arrow cc-btn" data-cursor="link">Discover <span class="arrow-track"><i class="fa-solid fa-arrow-right a1"></i><i class="fa-solid fa-arrow-right a2"></i></span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT — TREE BRANCH TIMELINE ============ -->
+    <section class="section-pad bg-bg relative" id="about">
+      <div class="container-fluid">
+        <div class="text-center mb-20 md:mb-28">
+          <p class="eyebrow justify-center" data-reveal>Our Story</p>
+          <h2 class="heading-lg" data-reveal>Rooted In Craft</h2>
+          <p class="body-text max-w-xl mx-auto mt-5" data-reveal>From a single atelier to an international house — every chapter grew from the same root: uncompromising craftsmanship.</p>
+        </div>
+
+        <div class="tree-wrap max-w-4xl mx-auto" id="treeWrap">
+          <div class="tree-trunk"><div class="tree-trunk-fill" id="trunkFill"></div></div>
+
+          <!-- Branch 1 -->
+          <div class="branch-row" data-branch>
+            <div class="branch-card branch-left ml-0 text-right" data-branch-card>
+              <span class="branch-year">1998</span>
+              <img src="assets/images/about-1.jpg" alt="Founding atelier sketching first designs" class="w-full h-40 object-cover mt-3 mb-4" data-cursor="media" />
+              <h3 class="font-sub text-xl text-primary mb-2">The First Stitch</h3>
+              <p class="body-text">APPLE begins in a small atelier with one tailor, one vision — clothing stripped of excess.</p>
+            </div>
+            <div class="branch-node"></div>
+            <div class="branch-line" data-branch-line style="right:50%;"><div class="branch-line-fill"></div></div>
+          </div>
+
+          <!-- Branch 2 -->
+          <div class="branch-row justify-end" data-branch>
+            <div class="branch-card branch-right mr-0" data-branch-card>
+              <span class="branch-year">2006</span>
+              <img src="assets/images/about-2.jpg" alt="Master tailors hand-stitching garments" class="w-full h-40 object-cover mt-3 mb-4" data-cursor="media" />
+              <h3 class="font-sub text-xl text-primary mb-2">The Atelier Grows</h3>
+              <p class="body-text">A workshop of master tailors joins, refining construction techniques passed down for generations.</p>
+            </div>
+            <div class="branch-node"></div>
+            <div class="branch-line" data-branch-line style="left:50%;"><div class="branch-line-fill"></div></div>
+          </div>
+
+          <!-- Branch 3 -->
+          <div class="branch-row" data-branch>
+            <div class="branch-card branch-left ml-0 text-right" data-branch-card>
+              <span class="branch-year">2014</span>
+              <img src="assets/images/about-3.jpg" alt="APPLE debut runway show" class="w-full h-40 object-cover mt-3 mb-4" data-cursor="media" />
+              <h3 class="font-sub text-xl text-primary mb-2">First Runway</h3>
+              <p class="body-text">APPLE steps onto the international stage, presenting its first runway collection to critical acclaim.</p>
+            </div>
+            <div class="branch-node"></div>
+            <div class="branch-line" data-branch-line style="right:50%;"><div class="branch-line-fill"></div></div>
+          </div>
+
+          <!-- Branch 4 -->
+          <div class="branch-row justify-end" data-branch>
+            <div class="branch-card branch-right mr-0" data-branch-card>
+              <span class="branch-year">2023</span>
+              <img src="assets/images/about-4.jpg" alt="APPLE flagship store interior" class="w-full h-40 object-cover mt-3 mb-4" data-cursor="media" />
+              <h3 class="font-sub text-xl text-primary mb-2">Flagship Opens</h3>
+              <p class="body-text">Our first flagship house opens its doors — a physical expression of the APPLE philosophy.</p>
+            </div>
+            <div class="branch-node"></div>
+            <div class="branch-line" data-branch-line style="left:50%;"><div class="branch-line-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="section-pad bg-bg" id="why">
+      <div class="container-fluid">
+        <div class="text-center mb-16">
+          <p class="eyebrow justify-center" data-reveal>Why APPLE</p>
+          <h2 class="heading-lg" data-reveal>Built To Last</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="feature-card" data-reveal-card>
+            <div class="feature-icon"><i class="fa-solid fa-scissors"></i></div>
+            <h3 class="font-sub text-lg text-primary">Hand Tailored</h3>
+            <p class="body-text">Every garment finished by hand in our atelier for uncompromising fit.</p>
+          </div>
+          <div class="feature-card" data-reveal-card>
+            <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+            <h3 class="font-sub text-lg text-primary">Sustainable Fabric</h3>
+            <p class="body-text">Responsibly sourced natural fibers, chosen for longevity over trend.</p>
+          </div>
+          <div class="feature-card" data-reveal-card>
+            <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <h3 class="font-sub text-lg text-primary">Global Delivery</h3>
+            <p class="body-text">Discreet, insured worldwide shipping on every order, no exceptions.</p>
+          </div>
+          <div class="feature-card" data-reveal-card>
+            <div class="feature-icon"><i class="fa-solid fa-infinity"></i></div>
+            <h3 class="font-sub text-lg text-primary">Lifetime Care</h3>
+            <p class="body-text">Complimentary repairs and alterations for the life of the garment.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 text-center">
+          <div>
+            <div class="counter-num" data-counter="26">0</div>
+            <p class="font-sub text-xs uppercase tracking-widest2 text-secondary mt-2">Years Of Craft</p>
+          </div>
+          <div>
+            <div class="counter-num" data-counter="48">0</div>
+            <p class="font-sub text-xs uppercase tracking-widest2 text-secondary mt-2">Countries Shipped</p>
+          </div>
+          <div>
+            <div class="counter-num" data-counter="120">0</div>
+            <p class="font-sub text-xs uppercase tracking-widest2 text-secondary mt-2">Master Tailors</p>
+          </div>
+          <div>
+            <div class="counter-num" data-counter="99">0</div>
+            <p class="font-sub text-xs uppercase tracking-widest2 text-secondary mt-2">% Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRODUCT SHOWCASE ============ -->
+    <section class="section-pad bg-bg" id="collection">
+      <div class="container-fluid">
+        <div class="text-center mb-16">
+          <p class="eyebrow justify-center" data-reveal>Shop The Look</p>
+          <h2 class="heading-lg" data-reveal>Product Showcase</h2>
+        </div>
+
+        <div class="showcase-grid">
+          <div class="showcase-item row-span-2" data-reveal-clip data-cursor="media">
+            <img src="assets/images/showcase-1.jpg" alt="APPLE overcoat detail" loading="lazy" />
+            <div class="si-overlay">
+              <span class="si-title">The Overcoat</span>
+              <a href="#contact" class="btn-underline mt-2" data-cursor="link">View Product</a>
+            </div>
+          </div>
+          <div class="showcase-item" data-reveal-clip data-cursor="media">
+            <img src="assets/images/showcase-2.jpg" alt="APPLE cashmere turtleneck detail" loading="lazy" />
+            <div class="si-overlay">
+              <span class="si-title">The Turtleneck</span>
+              <a href="#contact" class="btn-underline mt-2" data-cursor="link">View Product</a>
+            </div>
+          </div>
+          <div class="showcase-item" data-reveal-clip data-cursor="media">
+            <img src="assets/images/showcase-6.jpg" alt="Folded knitwear stack" loading="lazy" />
+            <div class="si-overlay">
+              <span class="si-title">Knitwear Edit</span>
+              <a href="#contact" class="btn-underline mt-2" data-cursor="link">View Product</a>
+            </div>
+          </div>
+          <div class="showcase-item" data-reveal-clip data-cursor="media">
+            <img src="assets/images/showcase-3.jpg" alt="APPLE tailored blazer detail" loading="lazy" />
+            <div class="si-overlay">
+              <span class="si-title">The Blazer</span>
+              <a href="#contact" class="btn-underline mt-2" data-cursor="link">View Product</a>
+            </div>
+          </div>
+          <div class="showcase-item row-span-2" data-reveal-clip data-cursor="media">
+            <img src="assets/images/showcase-4.jpg" alt="APPLE leather accessories detail" loading="lazy" />
+            <div class="si-overlay">
+              <span class="si-title">Leather Goods</span>
+              <a href="#contact" class="btn-underline mt-2" data-cursor="link">View Product</a>
+            </div>
+          </div>
+          <div class="showcase-item" data-reveal-clip data-cursor="media">
+            <img src="assets/images/showcase-7.jpg" alt="APPLE leather gloves and wallet" loading="lazy" />
+            <div class="si-overlay">
+              <span class="si-title">Small Leathers</span>
+              <a href="#contact" class="btn-underline mt-2" data-cursor="link">View Product</a>
+            </div>
+          </div>
+          <div class="showcase-item" data-reveal-clip data-cursor="media">
+            <img src="assets/images/showcase-5.jpg" alt="APPLE leather boots detail" loading="lazy" />
+            <div class="si-overlay">
+              <span class="si-title">The Boots</span>
+              <a href="#contact" class="btn-underline mt-2" data-cursor="link">View Product</a>
+            </div>
+          </div>
+          <div class="showcase-item" data-reveal-clip data-cursor="media">
+            <img src="assets/images/showcase-8.jpg" alt="APPLE silk scarf detail" loading="lazy" />
+            <div class="si-overlay">
+              <span class="si-title">Silk Edit</span>
+              <a href="#contact" class="btn-underline mt-2" data-cursor="link">View Product</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE 2 ============ -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack2" style="animation-direction: reverse;">
+        <span class="outline-text">TIMELESS DESIGN</span><i class="fa-solid fa-star"></i>
+        <span>HANDCRAFTED IN-HOUSE</span><i class="fa-solid fa-star"></i>
+        <span class="outline-text">WORLDWIDE SHIPPING</span><i class="fa-solid fa-star"></i>
+        <span>SUSTAINABLY SOURCED</span><i class="fa-solid fa-star"></i>
+        <span class="outline-text">TIMELESS DESIGN</span><i class="fa-solid fa-star"></i>
+        <span>HANDCRAFTED IN-HOUSE</span><i class="fa-solid fa-star"></i>
+        <span class="outline-text">WORLDWIDE SHIPPING</span><i class="fa-solid fa-star"></i>
+        <span>SUSTAINABLY SOURCED</span><i class="fa-solid fa-star"></i>
+      </div>
+    </div>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section-pad bg-bg" id="testimonials">
+      <div class="container-fluid">
+        <div class="text-center mb-16">
+          <p class="eyebrow justify-center" data-reveal>Word Of Mouth</p>
+          <h2 class="heading-lg" data-reveal>Client Voices</h2>
+        </div>
+
+        <div class="swiper testimonial-swiper" data-reveal>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <i class="fa-solid fa-quote-left text-accent text-3xl"></i>
+                <p class="testimonial-quote">"The tailoring is unlike anything I've worn — it feels engineered, not just sewn. APPLE pieces have quietly replaced half my wardrobe."</p>
+                <div class="flex items-center gap-4 mt-auto">
+                  <img src="assets/images/testimonial-1.jpg" alt="Portrait of Amara Voss" class="w-14 h-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-sub text-sm text-primary">Amara Voss</p>
+                    <p class="text-xs text-secondary">Creative Director</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <i class="fa-solid fa-quote-left text-accent text-3xl"></i>
+                <p class="testimonial-quote">"Rare to find a brand that treats restraint as a design language. The overcoat is, without question, the best I own."</p>
+                <div class="flex items-center gap-4 mt-auto">
+                  <img src="assets/images/testimonial-2.jpg" alt="Portrait of Julian Reyes" class="w-14 h-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-sub text-sm text-primary">Julian Reyes</p>
+                    <p class="text-xs text-secondary">Architect</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <i class="fa-solid fa-quote-left text-accent text-3xl"></i>
+                <p class="testimonial-quote">"From the packaging to the stitch count, everything communicates intention. This is what modern luxury should feel like."</p>
+                <div class="flex items-center gap-4 mt-auto">
+                  <img src="assets/images/testimonial-3.jpg" alt="Portrait of Naomi Ade" class="w-14 h-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-sub text-sm text-primary">Naomi Ade</p>
+                    <p class="text-xs text-secondary">Stylist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-progress mt-2">
+            <div class="testimonial-progress-fill" id="testimonialProgress"></div>
+          </div>
+          <div class="flex items-center justify-center gap-6 mt-8">
+            <button class="btn-morph testimonial-prev" aria-label="Previous testimonial" data-cursor="link"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="btn-morph testimonial-next" aria-label="Next testimonial" data-cursor="link"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section-pad bg-bg" id="contact">
+      <div class="container-fluid grid md:grid-cols-2 gap-14 items-center">
+        <div data-reveal>
+          <p class="eyebrow">Get In Touch</p>
+          <h2 class="heading-lg">Visit The Atelier</h2>
+          <p class="body-text max-w-md mt-4 mb-10">Private appointments, press enquiries or bespoke commissions — our team responds within one business day.</p>
+
+          <form id="contactForm" class="flex flex-col gap-8" novalidate>
+            <div class="form-group">
+              <input type="text" id="nameInput" name="name" class="form-input" required autocomplete="name" />
+              <label for="nameInput" class="form-label">Full Name</label>
+              <span class="form-underline"></span>
+              <span class="form-error">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+              <input type="email" id="emailInput" name="email" class="form-input" required autocomplete="email" />
+              <label for="emailInput" class="form-label">Email Address</label>
+              <span class="form-underline"></span>
+              <span class="form-error">Please enter a valid email.</span>
+            </div>
+            <div class="form-group">
+              <textarea id="messageInput" name="message" rows="3" class="form-input resize-none" required></textarea>
+              <label for="messageInput" class="form-label">Your Message</label>
+              <span class="form-underline"></span>
+              <span class="form-error">Please enter a message.</span>
+            </div>
+            <button type="submit" class="btn-ripple self-start" data-magnetic data-cursor="link">
+              <span class="relative z-10">Send Message</span>
+            </button>
+            <p class="text-xs text-accent opacity-0 transition-opacity duration-500" id="formSuccess" role="status">Message sent — thank you. We'll be in touch shortly.</p>
+          </form>
+        </div>
+
+        <div class="relative aspect-[4/5] max-w-md mx-auto w-full" data-reveal>
+          <img src="assets/images/contact-image.jpg" alt="Model in APPLE tailored dress by a window" class="w-full h-full object-cover" data-cursor="media" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-bg border-t border-[rgba(255,255,255,.08)] pt-20 pb-8" id="footer">
+    <div class="container-fluid">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16" data-reveal>
+        <div>
+          <p class="footer-logo mb-4">APPLE</p>
+          <p class="body-text max-w-xs">Considered garments for those who dress with intent. Est. 1998.</p>
+          <div class="flex items-center gap-4 mt-6">
+            <a href="#" class="btn-scale" data-cursor="link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="btn-scale" data-cursor="link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="btn-scale" data-cursor="link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="btn-scale" data-cursor="link" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-heading">Quick Links</p>
+          <ul class="flex flex-col gap-3">
+            <li><a href="#home" class="btn-underline" data-cursor="link">Home</a></li>
+            <li><a href="#collection" class="btn-underline" data-cursor="link">Collection</a></li>
+            <li><a href="#about" class="btn-underline" data-cursor="link">About</a></li>
+            <li><a href="#contact" class="btn-underline" data-cursor="link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">Newsletter</p>
+          <p class="body-text mb-4">Join the list for early access to new drops.</p>
+          <form class="relative" id="newsletterForm">
+            <input type="email" required placeholder="Email address" class="w-full bg-transparent border-b border-[rgba(255,255,255,.18)] py-3 pr-10 text-sm focus:outline-none focus:border-accent transition-colors" />
+            <button type="submit" class="absolute right-0 top-1/2 -translate-y-1/2 text-accent" aria-label="Subscribe" data-cursor="link"><i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+        </div>
+
+        <div>
+          <p class="footer-heading">Instagram</p>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="insta-item" data-cursor="media"><img src="assets/images/showcase-1.jpg" alt="APPLE instagram post" loading="lazy" /></div>
+            <div class="insta-item" data-cursor="media"><img src="assets/images/showcase-2.jpg" alt="APPLE instagram post" loading="lazy" /></div>
+            <div class="insta-item" data-cursor="media"><img src="assets/images/showcase-3.jpg" alt="APPLE instagram post" loading="lazy" /></div>
+            <div class="insta-item" data-cursor="media"><img src="assets/images/showcase-4.jpg" alt="APPLE instagram post" loading="lazy" /></div>
+            <div class="insta-item" data-cursor="media"><img src="assets/images/showcase-5.jpg" alt="APPLE instagram post" loading="lazy" /></div>
+            <div class="insta-item" data-cursor="media"><img src="assets/images/showcase-6.jpg" alt="APPLE instagram post" loading="lazy" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-[rgba(255,255,255,.08)] text-xs text-secondary">
+        <p>&copy; <span id="year"></span> APPLE Atelier. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-accent transition-colors" data-cursor="link">Privacy</a>
+          <a href="#" class="hover:text-accent transition-colors" data-cursor="link">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" data-cursor="link">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ============ VENDOR SCRIPTS (CDN) ============ -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- ============ APP SCRIPTS ============ -->
+  <script src="assets/js/cursor.js" defer></script>
+  <script src="assets/js/menu.js" defer></script>
+  <script src="assets/js/swiper.js" defer></script>
+  <script src="assets/js/animation.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

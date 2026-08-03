@@ -1,0 +1,137 @@
+/* =========================================================
+   media.css
+   ---------------------------------------------------------
+   Responsive fine-tuning across the required breakpoint set
+   (320 / 375 / 425 / 768 / 1024 / 1280 / 1440 / 1920). Tailwind's
+   utility classes in index.html cover the majority of responsive
+   behaviour; this file handles the custom components (tree-branch
+   timeline, preloader, cursor, marquee) that need bespoke rules.
+========================================================= */
+
+/* ---------- Small phones (<= 375px) ---------- */
+@media (max-width: 375px) {
+  .heading-xl {
+    font-size: 15vw;
+  }
+  .preloader-bar-track {
+    width: 180px;
+  }
+  .collection-card {
+    width: 84vw;
+  }
+}
+
+/* ---------- Phones (<= 425px) ---------- */
+@media (max-width: 425px) {
+  .container-fluid {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .mobile-menu .menu-link {
+    font-size: 2.75rem;
+  }
+}
+
+/* ---------- Up to tablet (<= 767px): tree branch collapses to a single centered column ---------- */
+@media (max-width: 767px) {
+  .tree-trunk {
+    left: 24px;
+    transform: none;
+  }
+  .branch-row {
+    justify-content: flex-start !important;
+    padding-left: 56px;
+    margin-bottom: 3.5rem;
+  }
+  .branch-node {
+    left: 24px;
+    transform: translate(-50%, -50%);
+  }
+  .branch-line {
+    display: none;
+  }
+  .branch-card {
+    width: 100% !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+  .branch-leaf {
+    display: none;
+  }
+
+  .showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .showcase-item.row-span-2 {
+    grid-row: auto;
+  }
+}
+
+/* ---------- Tablet (768px - 1023px) ---------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .heading-xl {
+    font-size: 11vw;
+  }
+  .collection-card {
+    width: 60vw;
+  }
+}
+
+/* ---------- Small desktop (1024px - 1279px) ---------- */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .collection-card {
+    width: 34vw;
+  }
+}
+
+/* ---------- Desktop (1280px - 1439px) ---------- */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .container-fluid {
+    max-width: 1240px;
+  }
+}
+
+/* ---------- Large desktop (1440px - 1919px) ---------- */
+@media (min-width: 1440px) {
+  .heading-xl {
+    font-size: 6.5vw;
+  }
+  .marquee-track span {
+    font-size: 3.25rem;
+  }
+}
+
+/* ---------- Ultra-wide (>= 1920px) ---------- */
+@media (min-width: 1920px) {
+  .container-fluid {
+    max-width: 1760px;
+  }
+  .collection-card {
+    width: 24vw;
+  }
+}
+
+/* ---------- Reduced motion accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .float-anim {
+    animation: none !important;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .navbar,
+  .cursor-dot,
+  .cursor-ring,
+  .back-to-top,
+  .preloader,
+  .mobile-menu {
+    display: none !important;
+  }
+}
